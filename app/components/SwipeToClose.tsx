@@ -27,7 +27,7 @@ interface SwipeToCloseProps {
 }
 
 const SwipeToClose = ({children, y, opacity, scale: s}: SwipeToCloseProps) => {
-    const scale = useValue(1);
+    const scale = useValue(0);//useValue(1); //This was the cause for the initial jump before the animation begins
     useCode(
         () => [
             cond(
@@ -40,7 +40,7 @@ const SwipeToClose = ({children, y, opacity, scale: s}: SwipeToCloseProps) => {
                     scale,
                     interpolate(y, {
                         inputRange: [0, 100],
-                        outputRange: [1, 0.75],
+                        outputRange: [1, 0.95],
                         extrapolate: Extrapolate.CLAMP,
                     }),
                 ),
