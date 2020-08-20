@@ -6,6 +6,7 @@ import {
     Text,
     useWindowDimensions,
     View,
+    FlatList
 } from 'react-native';
 import Animated, {useCode, clockRunning} from 'react-native-reanimated';
 
@@ -132,8 +133,10 @@ const Modal = ({movie, position, close}: ModalProps) => {
                     ...p,
                 }}>
                 <View style={styles.content}>
-                    <ScrollView>
-                        <Text style={styles.paragraph}>
+                    <FlatList contentInsetAdjustmentBehavior="automatic"
+                        ListHeaderComponent={
+                        <>
+                            <Text style={styles.paragraph}>
                             <Text style={{fontWeight: 'bold'}}>
                                 {`${titleCase(movie.name)} `}
                             </Text>
@@ -141,7 +144,12 @@ const Modal = ({movie, position, close}: ModalProps) => {
                                 {movie.description}
                             </Text>
                         </Text>
-                    </ScrollView>
+                        </>}
+                        data = {movie.reviews}
+                        renderItem={({item, index}) => (
+                            <Text> {item.body} </Text>
+                        )}              
+                    />
                 </View>
             </Animated.View>
             <Animated.View style={{...p, height: position.height}}>
