@@ -1,6 +1,6 @@
 import {RouteProp, useRoute} from '@react-navigation/native';
 import React, {useState} from 'react';
-import {SafeAreaView, ScrollView, StatusBar} from 'react-native';
+import {SafeAreaView, ScrollView, StatusBar, FlatList} from 'react-native';
 import {useValue} from 'react-native-redash';
 
 import Modal from '@components/Modal';
@@ -42,17 +42,18 @@ const Start = () => {
         <>
             <StatusBar barStyle="dark-content" />
             <SafeAreaView>
-                <ScrollView contentInsetAdjustmentBehavior="automatic">
-                    {movies.map((movie, index) => (
+                <FlatList contentInsetAdjustmentBehavior="automatic"
+                    data = {movies}
+                    renderItem={({item, index}) => (
                         <Movie
                             activeMovieId={activeMovieId}
-                            key={movie.name}
+                            key={index}
                             index={index}
-                            movie={movie}
+                            movie={item}
                             open={open}
                         />
-                    ))}
-                </ScrollView>
+                    )}              
+                />
                 {modal !== null && <Modal {...modal} close={close} />}
             </SafeAreaView>
         </>
