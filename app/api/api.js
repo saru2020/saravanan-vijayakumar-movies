@@ -33,7 +33,7 @@ export const randomMovies = () => {
     const shouldFail = Math.random() < 0.1;//failure probability
     var movies = null;
     if (!shouldFail) {//For failure demo
-        movies = generateMovies(10, 10, 3);
+        movies = generateMovies(10, 5, 3);
     }
     return movies;
 };

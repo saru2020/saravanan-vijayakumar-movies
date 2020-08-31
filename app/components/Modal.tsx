@@ -137,13 +137,24 @@ const Modal = ({movie, position, close}: ModalProps) => {
                         ListHeaderComponent={
                         <>
                             <Text style={styles.paragraph}>
+                                <Text style={{fontWeight: 'bold'}}>
+                                    {`${titleCase(movie.name)} `}
+                                </Text>
+                                <Text style={styles.paragraph}>
+                                    {movie.description}
+                                </Text>
+                            </Text>
                             <Text style={{fontWeight: 'bold'}}>
-                                {`${titleCase(movie.name)} `}
+                                Casts:
                             </Text>
-                            <Text style={styles.paragraph}>
-                                {movie.description}
+                            <Text style={styles.casts}>
+                              {movie.casts.map(function(item) {
+                                return item.name;
+                              }).join()}
                             </Text>
-                        </Text>
+                            <Text style={{fontWeight: 'bold'}}>
+                                Reviews:
+                            </Text>
                         </>}
                         data = {movie.reviews}
                         renderItem={({item, index}) => (
@@ -166,6 +177,10 @@ const styles = StyleSheet.create({
     },
     paragraph: {
         fontSize: 24,
+        marginBottom: 16,
+    },
+    casts: {
+        fontSize: 14,
         marginBottom: 16,
     },
 });

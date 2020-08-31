@@ -4,7 +4,7 @@ export default interface Movie {
     id?: string;
     name: string;
     poster: string;
-    gender: string;
+    genre: string;
     description: string;
     reviews?: Array<Review>;
 }
