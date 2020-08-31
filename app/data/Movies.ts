@@ -157,7 +157,7 @@ const Movies: Array<Movie> = [
         description:
             "The son of a virtual world designer goes looking for his father and ends up inside the digital world that his father designed. He meets his father's corrupted creation and a unique ally who was born inside the digital world.",
     },
-    {
+    {   
         name: 'Up',
         poster:
             'https://raw.githubusercontent.com/enahum/mattermost-react-native-interview/master/posters/Up.jpg',
